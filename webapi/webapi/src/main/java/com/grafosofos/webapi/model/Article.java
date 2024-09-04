@@ -6,6 +6,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 @Data
 @Entity
 @Table(name = "articles")
@@ -23,6 +26,17 @@ public class Article {
 
     @Column(name = "author")
     private String author;
+
+    @Column(name = "description")
+    private String description;
+
+    @Column(name = "date_created")
+    private LocalDateTime date;
+
+    public void setDateCreated(String date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        this.date = LocalDateTime.parse(date, formatter);
+    }
 
 
 }

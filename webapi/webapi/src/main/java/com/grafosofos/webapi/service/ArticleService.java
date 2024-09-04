@@ -27,4 +27,7 @@ public class ArticleService {
     }
 
     // Other service methods can be added as needed
+    public Article saveArticle(Article article) {
+        return articleRepository.save(article);
+    }
 }
