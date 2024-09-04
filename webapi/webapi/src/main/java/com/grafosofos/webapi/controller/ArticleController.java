@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
 public class ArticleController {
 
     private final ArticleService articleService;
@@ -25,13 +24,12 @@ public class ArticleController {
         return articleService.getAllArticles();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/api/articles/{id}")
     public Article getArticleById(@PathVariable Long id) {
         return articleService.getArticleById(id);
     }
 
     // Additional endpoints can be added as needed
-    @CrossOrigin(origins = "http://localhost:4200")  // Allow your frontend's origin
     @PostMapping("/api/articles")
     public ResponseEntity<Article> createArticle(@RequestBody Article article) {
         Article createdArticle = articleService.saveArticle(article);
