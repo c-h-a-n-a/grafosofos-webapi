@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-public class WebConfig {
+public class WebConfig implements WebMvcConfigurer{
 
     //    @Bean
 //    public WebMvcConfigurer corsConfigurer() {
@@ -24,39 +24,40 @@ public class WebConfig {
 //            }
 //        };
 //    }
-//@Override
-//public void addCorsMappings(CorsRegistry registry) {
-//    registry.addMapping("/**")
-//            .allowedOrigins("https://grafosofos.com")
-//            .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-//            .allowedHeaders("*")
-//            .allowCredentials(true);
-//}
-    @Bean
-    public CorsFilter corsFilter() {
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        CorsConfiguration config = new CorsConfiguration();
-
-        // Allow credentials if needed
-        config.setAllowCredentials(true);
-
-        // Add your custom domain here
-        config.addAllowedOrigin("https://grafosofos.com");
-
-        // Allow specific methods
-        config.addAllowedMethod("GET");
-        config.addAllowedMethod("POST");
-        config.addAllowedMethod("PUT");
-        config.addAllowedMethod("DELETE");
-
-        config.addAllowedMethod("OPTIONS");
-        // Allow headers
-        config.addAllowedHeader("*");
-
-        // Set the exposed headers if needed
-        config.addExposedHeader("Authorization");
-
-        source.registerCorsConfiguration("/**", config);
-        return new CorsFilter();
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedOrigins("https://grafosofos.com")
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                .allowedHeaders("*")
+                .allowCredentials(true);
     }
+    
+//    @Bean
+//    public CorsFilter corsFilter() {
+//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//        CorsConfiguration config = new CorsConfiguration();
+//
+//        // Allow credentials if needed
+//        config.setAllowCredentials(true);
+//
+//        // Add your custom domain here
+//        config.addAllowedOrigin("https://grafosofos.com");
+//
+//        // Allow specific methods
+//        config.addAllowedMethod("GET");
+//        config.addAllowedMethod("POST");
+//        config.addAllowedMethod("PUT");
+//        config.addAllowedMethod("DELETE");
+//
+//        config.addAllowedMethod("OPTIONS");
+//        // Allow headers
+//        config.addAllowedHeader("*");
+//
+//        // Set the exposed headers if needed
+//        config.addExposedHeader("Authorization");
+//
+//        source.registerCorsConfiguration("/**", config);
+//        return new CorsFilter(source);
+//    }
 }
