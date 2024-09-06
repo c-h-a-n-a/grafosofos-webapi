@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.grafosofos.webapi.WebapiApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.571 s -- in com.grafosofos.webapi.WebapiApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.061 s -- in com.grafosofos.webapi.WebapiApplicationTests
