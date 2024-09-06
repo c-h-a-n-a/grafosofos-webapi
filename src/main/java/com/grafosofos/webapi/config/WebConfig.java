@@ -1,6 +1,8 @@
 package com.grafosofos.webapi.config;
 
 import org.apache.catalina.filters.CorsFilter;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -8,6 +10,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
 
 @Configuration
 @ComponentScan(basePackages = "com.grafosofos.webapi")
@@ -26,13 +29,17 @@ public class WebConfig implements WebMvcConfigurer{
 //            }
 //        };
 //    }
+    private static final Logger logger = LoggerFactory.getLogger(WebConfig.class);
+
     @Override
     public void addCorsMappings(CorsRegistry registry) {
+        logger.info("Configuring CORS settings");
         registry.addMapping("/**")
                 .allowedOrigins("https://grafosofos.com")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-                .allowedHeaders("Origin", "Content-Type", "Accept", "Authorization")
+                .allowedHeaders("*")
                 .allowCredentials(true);
+        logger.info("CORS settings configured");
     }
     
 //    @Bean
