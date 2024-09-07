@@ -1,19 +1,24 @@
 package com.grafosofos.webapi.config;
 
-import org.apache.catalina.filters.CorsFilter;
+
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
+
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.filter.CorsFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.context.annotation.Bean;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 
 
 @Configuration
-@ComponentScan(basePackages = "com.grafosofos.webapi")
 public class WebConfig implements WebMvcConfigurer{
 
     //    @Bean
@@ -25,7 +30,7 @@ public class WebConfig implements WebMvcConfigurer{
 //                        .allowedOrigins("https://grafosofos.com") // for prod: https://grafosofos.netlify.app for local dev: http://localhost:4200
 //                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
 //                        .allowedHeaders("*")
-//                        .allowCredentials(true);;
+//                        .allowCredentials(true);
 //            }
 //        };
 //    }
@@ -39,7 +44,8 @@ public class WebConfig implements WebMvcConfigurer{
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .exposedHeaders("Access-Control-Allow-Origin", "Access-Control-Allow-Credentials")
-                .allowCredentials(true);;
+                .allowCredentials(true)
+                .exposedHeaders("Authorization");
         logger.info("CORS settings configured");
     }
     
@@ -70,4 +76,21 @@ public class WebConfig implements WebMvcConfigurer{
 //        source.registerCorsConfiguration("/**", config);
 //        return new CorsFilter(source);
 //    }
+
+    @Bean
+    public CorsFilter corsFilter() {
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        CorsConfiguration config = new CorsConfiguration();
+        config.setAllowCredentials(true);
+        config.addAllowedOrigin("https://grafosofos.com");  // Your allowed origin
+        config.addAllowedHeader("*");  // Allow all headers
+        config.addAllowedMethod("*");  // Allow all HTTP methods
+        config.addExposedHeader("Access-Control-Allow-Origin");
+        config.addExposedHeader("Access-Control-Allow-Credentials");
+        source.registerCorsConfiguration("/**", config);
+
+        return new CorsFilter(source);  // Return the configured filter
+    }
+
+
 }
