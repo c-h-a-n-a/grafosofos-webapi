@@ -38,7 +38,8 @@ public class WebConfig implements WebMvcConfigurer{
                 .allowedOrigins("https://grafosofos.com")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
-                .allowCredentials(true);
+                .exposedHeaders("Access-Control-Allow-Origin", "Access-Control-Allow-Credentials")
+                .allowCredentials(true);;
         logger.info("CORS settings configured");
     }
     
