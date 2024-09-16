@@ -21,17 +21,14 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 @Configuration
 public class WebConfig implements WebMvcConfigurer{
 
-    @Bean
-    public CorsFilter corsFilter() {
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        CorsConfiguration config = new CorsConfiguration();
-        config.setAllowCredentials(true); // Enable credentials such as cookies
-        config.addAllowedOrigin("https://grafosofos.com"); // Allow your frontend's domain
-        config.addAllowedHeader("*"); // Allow all headers
-        config.addAllowedMethod("*"); // Allow all methods (GET, POST, etc.)
-        config.addExposedHeader("Access-Control-Allow-Origin");
-        source.registerCorsConfiguration("/**", config);
-        return new CorsFilter(source);
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedOrigins("https://grafosofos.com")  // Ensure the correct origin
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                .allowedHeaders("*")
+                .allowCredentials(true)
+                .exposedHeaders("Access-Control-Allow-Origin", "Access-Control-Allow-Credentials");
     }
 
 
