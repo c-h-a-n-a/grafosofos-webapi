@@ -1,7 +1,7 @@
-com\grafosofos\webapi\config\WebConfig$1.class
 com\grafosofos\webapi\service\ArticleService.class
 com\grafosofos\webapi\controller\ArticleController.class
 com\grafosofos\webapi\WebapiApplication.class
 com\grafosofos\webapi\repo\ArticleRepository.class
 com\grafosofos\webapi\model\Article.class
 com\grafosofos\webapi\config\WebConfig.class
+com\grafosofos\webapi\config\CorsFilter.class
