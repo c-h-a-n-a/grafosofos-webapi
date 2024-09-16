@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @Slf4j
+@CrossOrigin(origins = "https://grafosofos.com")
 public class ArticleController {
 
     private final ArticleService articleService;
@@ -21,6 +22,7 @@ public class ArticleController {
         this.articleService = articleService;
     }
 
+    @CrossOrigin(origins = "https://grafosofos.com")
     @GetMapping("/api/articles")
     public List<Article> getAllArticles() {
         return articleService.getAllArticles();
