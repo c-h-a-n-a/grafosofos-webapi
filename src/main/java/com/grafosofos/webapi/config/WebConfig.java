@@ -21,75 +21,17 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 @Configuration
 public class WebConfig implements WebMvcConfigurer{
 
-    //    @Bean
-//    public WebMvcConfigurer corsConfigurer() {
-//        return new WebMvcConfigurer() {
-//            @Override
-//            public void addCorsMappings(CorsRegistry registry) {
-//                registry.addMapping("/**")
-//                        .allowedOrigins("https://grafosofos.com") // for prod: https://grafosofos.netlify.app for local dev: http://localhost:4200
-//                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-//                        .allowedHeaders("*")
-//                        .allowCredentials(true);
-//            }
-//        };
-//    }
-    private static final Logger logger = LoggerFactory.getLogger(WebConfig.class);
-
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        logger.info("Configuring CORS settings");
-        registry.addMapping("/**")
-                .allowedOrigins("https://grafosofos.com")
-                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-                .allowedHeaders("*")
-                .exposedHeaders("Access-Control-Allow-Origin", "Access-Control-Allow-Credentials")
-                .allowCredentials(true)
-                .exposedHeaders("Authorization");
-        logger.info("CORS settings configured");
-    }
-    
-//    @Bean
-//    public CorsFilter corsFilter() {
-//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-//        CorsConfiguration config = new CorsConfiguration();
-//
-//        // Allow credentials if needed
-//        config.setAllowCredentials(true);
-//
-//        // Add your custom domain here
-//        config.addAllowedOrigin("https://grafosofos.com");
-//
-//        // Allow specific methods
-//        config.addAllowedMethod("GET");
-//        config.addAllowedMethod("POST");
-//        config.addAllowedMethod("PUT");
-//        config.addAllowedMethod("DELETE");
-//
-//        config.addAllowedMethod("OPTIONS");
-//        // Allow headers
-//        config.addAllowedHeader("*");
-//
-//        // Set the exposed headers if needed
-//        config.addExposedHeader("Authorization");
-//
-//        source.registerCorsConfiguration("/**", config);
-//        return new CorsFilter(source);
-//    }
-
     @Bean
     public CorsFilter corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowCredentials(true);
-        config.addAllowedOrigin("https://grafosofos.com");  // Your allowed origin
-        config.addAllowedHeader("*");  // Allow all headers
-        config.addAllowedMethod("*");  // Allow all HTTP methods
+        config.setAllowCredentials(true); // Enable credentials such as cookies
+        config.addAllowedOrigin("https://grafosofos.com"); // Allow your frontend's domain
+        config.addAllowedHeader("*"); // Allow all headers
+        config.addAllowedMethod("*"); // Allow all methods (GET, POST, etc.)
         config.addExposedHeader("Access-Control-Allow-Origin");
-        config.addExposedHeader("Access-Control-Allow-Credentials");
         source.registerCorsConfiguration("/**", config);
-
-        return new CorsFilter(source);  // Return the configured filter
+        return new CorsFilter(source);
     }
 
 
