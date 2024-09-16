@@ -42,7 +42,7 @@ public class ArticleController {
     public ResponseEntity<Void> handleOptions() {
         log.info("Preflight request received");
         return ResponseEntity.ok()
-                .header("Access-Control-Allow-Origin", "https://grafosofos.com")
+                .header("Access-Control-Allow-Origin", "http://localhost:4200") //http://localhost:4200 https://grafosofos.com
                 .header("Access-Control-Allow-Methods", "POST,GET,DELETE,PUT,OPTIONS")
                 .header("Access-Control-Allow-Headers", "*")
                 .header("Access-Control-Allow-Credentials", "true")
