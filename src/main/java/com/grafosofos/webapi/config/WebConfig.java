@@ -27,8 +27,8 @@ public class WebConfig implements WebMvcConfigurer{
                 .allowedOrigins("https://grafosofos.com")  // Ensure the correct origin https://grafosofos.com http://localhost:4200
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
-                .allowCredentials(true)
-                .exposedHeaders("Access-Control-Allow-Origin", "Access-Control-Allow-Credentials");
+                .allowCredentials(true) //                .exposedHeaders("Access-Control-Allow-Origin", "Access-Control-Allow-Credentials")
+         ;
     }
 
 
