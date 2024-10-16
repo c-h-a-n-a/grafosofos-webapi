@@ -1,7 +1,12 @@
 C:\Users\a853987\Documents\Github\grafosofos-webapi\src\main\java\com\grafosofos\webapi\config\CorsFilter.java
 C:\Users\a853987\Documents\Github\grafosofos-webapi\src\main\java\com\grafosofos\webapi\config\WebConfig.java
 C:\Users\a853987\Documents\Github\grafosofos-webapi\src\main\java\com\grafosofos\webapi\controller\ArticleController.java
+C:\Users\a853987\Documents\Github\grafosofos-webapi\src\main\java\com\grafosofos\webapi\controller\QuestionController.java
 C:\Users\a853987\Documents\Github\grafosofos-webapi\src\main\java\com\grafosofos\webapi\model\Article.java
+C:\Users\a853987\Documents\Github\grafosofos-webapi\src\main\java\com\grafosofos\webapi\model\Question.java
 C:\Users\a853987\Documents\Github\grafosofos-webapi\src\main\java\com\grafosofos\webapi\repo\ArticleRepository.java
+C:\Users\a853987\Documents\Github\grafosofos-webapi\src\main\java\com\grafosofos\webapi\repo\QuestionRepository.java
 C:\Users\a853987\Documents\Github\grafosofos-webapi\src\main\java\com\grafosofos\webapi\service\ArticleService.java
+C:\Users\a853987\Documents\Github\grafosofos-webapi\src\main\java\com\grafosofos\webapi\service\QuestionService.java
+C:\Users\a853987\Documents\Github\grafosofos-webapi\src\main\java\com\grafosofos\webapi\util\JsonUtils.java
 C:\Users\a853987\Documents\Github\grafosofos-webapi\src\main\java\com\grafosofos\webapi\WebapiApplication.java
